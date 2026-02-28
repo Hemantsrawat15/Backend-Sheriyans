@@ -1,88 +1,33 @@
-// The job of this file is the create a server (Instance)
+const express = require('express');
+const noteModel = require("./models/node.model")
 
-const express = require("express");
+const app = express();
+app.use(express.json());
 
-const app = express(); // We are creating a server instance here
+// note = { title, description }
 
-app.use(express.json()) // Middleware
+/*
+POST /notes => Create a note
+GET /notes => Get all notes
+DELETE /note/:id => Delete a note
+PATCH /note/:id => Update a note
+*/
 
 
-const notes = [];
+app.post("/notes",async (req,res)=>{
 
-app.post('/notes',(req,res)=>{
+    const data = req.body
 
-    notes.push(req.body);
+    // { title, description }
 
-    // console.log(req.body); Data req.body ke andar aata hai
+   await noteModel.create({
+    title: data.title,
+    description: data.description
+   })
 
-    res.status(201).json({
-        message: "Note Created Successfully",
-    })
+   res.status(201).json({
+    messsage: "Note Created"
+   })
 })
 
-app.get('/notes',(req,res)=>{
-    res.status(200).json({
-        message: "Notes Fetched Successfully",
-        notes: notes
-    });
-})
-
-app.patch('/notes/:index',(req,res)=>{
-    const index = parseInt(req.params.index);
-    if(isNaN(index) || index<0 || index>=notes.length){
-        return res.status(404).json({
-            message: "Invalid Index",
-        })
-    }
-    console.log(req.body);
-    const {title, description} = req.body;
-    if(title !== undefined){
-        notes[index].title = title;
-    }
-    if(description !== undefined){
-        notes[index].description = description;
-    }
-    res.status(200).json({
-        message: "Note Updated Succesfully",
-        updated: notes[index]
-    })
-});
-
-app.delete('/notes/:index',(req,res)=>{
-
-    // delete /notes/15
-    console.log(req.params);
-    const index = parseInt(req.params.index); // 15
-    if(isNaN(index) || index<0 || index>= notes.length){
-        return res.status(404).json({
-            message:"Invalid Index"
-        })
-    }
-    const deleteNode = notes.splice(index,1);
-    res.status(200).json({
-        message: "Note deleted successfully",
-        deleted: deleteNode,
-    })
-})
-
-// note = {
-//     title: "My First Note",
-//     description: "Description"
-// }
-
-// const notes = [
-//     {
-//         title: "My First Note",
-//         description: "Description"
-//     },
-//     {
-//         title: "My First Note",
-//         description: "Description"
-//     }
-//     , {
-//         title: "My First Note",
-//         description: "Description"
-//     }
-// ]
-
-module.exports = app // Jo server banaya tha usko export karlo
+module.exports = app;
