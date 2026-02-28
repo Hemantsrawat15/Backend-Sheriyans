@@ -35,9 +35,16 @@ app.patch('/notes/:index',(req,res)=>{
         })
     }
     console.log(req.body);
-    notes[index] = req.body;
+    const {title, description} = req.body;
+    if(title !== undefined){
+        notes[index].title = title;
+    }
+    if(description !== undefined){
+        notes[index].description = description;
+    }
     res.status(200).json({
-        message: "Note updated sucessfully"
+        message: "Note Updated Succesfully",
+        updated: notes[index]
     })
 });
 
