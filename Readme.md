@@ -14,7 +14,9 @@
 }
 
 28th February (Continued) => {
-    tileEnded: 2:37:15,
+    tileEnded: 2:37:15 -> 2:50:07,
     learn:{
+        CRUD operations in mongoose
+        .create, .find, .findOne, 
     }
 }
