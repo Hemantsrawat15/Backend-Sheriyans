@@ -1,9 +1,8 @@
-// Connect Server to Database
-
 const mongoose = require('mongoose');
 
-async function connectDB() {
-    await mongoose.connect("mongodb+srv://admin:Jamesbond21@backend-sheriyans-clust.clhclv3.mongodb.net/?appName=backend-sheriyans-cluster")
+
+async function connectDB(){
+    await mongoose.connect("mongodb+srv://admin:Jamesbond21@backend-sheriyans-clust.clhclv3.mongodb.net/project-1");
     console.log("Connected to DB");
 }
 
