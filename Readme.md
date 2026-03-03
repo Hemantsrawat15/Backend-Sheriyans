@@ -34,3 +34,10 @@
         "Basic project setup",
     }
 }
+
+3rd March => {
+    tileEnded: 3:44:48,
+    done : {
+        "Made POST /create-post api which uploads the image to imageKit but we have not stored the url in mongoDB yet",
+    }
+}

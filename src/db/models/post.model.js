@@ -6,4 +6,5 @@ const postSchema = new mongoose.Schema({
     caption: String,
 })
 
+// post here represents the name of collection in mongoDB
 const postModel = mongoose.model("post", postSchema);
