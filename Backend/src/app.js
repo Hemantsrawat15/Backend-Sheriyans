@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require("multer");
 const uploadFile = require("./db/services/storage.service");
+const postModel = require("./db/models/post.model");
 
 const app = express();
 
@@ -27,16 +28,40 @@ app.post("/create-post", upload.single("image"), async (req, res) => {
         size: 295806
     }
     */
-   const result = await uploadFile(req.file.buffer);
-   if(!result){
-    return res.status(400).json({
-        message: "File upload failed"
+    const result = await uploadFile(req.file.buffer);
+    if (!result) {
+        return res.status(400).json({
+            message: "File upload failed"
+        })
+    }
+    console.log(result);
+
+    const post = await postModel.create({
+        image: result.url,
+        caption: req.body.caption,
     })
-   }
-   console.log(result);
-   return res.status(200).json({
-    message: "File uploaded successfully"
-   })
+
+    return res.status(201).json({
+        message: "Post created successfully",
+        post
+    })
+})
+
+
+app.get("/posts", async(req,res)=>{
+    const response = await postModel.find();
+    // const response = await postModel.findOne({
+    //     caption: "test_caption"
+    // })
+    if(!response){
+        return res.status(400).json({
+            message: "Failed to fetch posts",
+        })
+    }
+    return res.status(200).json({
+        message: "Fetched posts successfully",
+        posts: response,
+    })
 })
 
 module.exports = app;
