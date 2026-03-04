@@ -2,8 +2,11 @@ const express = require('express');
 const multer = require("multer");
 const uploadFile = require("./db/services/storage.service");
 const postModel = require("./db/models/post.model");
+const cors = require("cors");
 
 const app = express();
+
+app.use(cors());
 
 // .json() is a middleware for raw data
 app.use(express.json()); // for raw data from postman or frontend ( raw data can't have images or files )
