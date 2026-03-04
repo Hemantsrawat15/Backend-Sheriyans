@@ -48,3 +48,13 @@
         "Completed POST and GET api with imagekit integration",
     }
 }
+
+4th March (Continued) => {
+    tileEnded: 4:32:51,
+    done : {
+        "Completed the projected and integrated backend api for create-post and get posts in the fronted",
+    }
+    learn:{
+        learn about cors and .env and axios
+    }
+}
