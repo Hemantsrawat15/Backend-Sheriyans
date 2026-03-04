@@ -41,3 +41,10 @@
         "Made POST /create-post api which uploads the image to imageKit but we have not stored the url in mongoDB yet",
     }
 }
+
+4th March => {
+    tileEnded: 4:01:10,
+    done : {
+        "Completed POST and GET api with imagekit integration",
+    }
+}
