@@ -38,3 +38,9 @@ Server creates a token that contains data of the user and the server sends the t
 Jab bhi ek user koi bhi request karta hai in future to the server toh vo ek token bhi bhejta hai jisse server ko pata chalta hai ki vo konsa user hai
 
 npm i jsonwebtoken = > For token
+
+5:24:38 => Cookies storage kaa admin access rehta hai server ke paas, Server cookies mei kuch bhi read write kar sakta hai.
+Cookies ke andar jo bhi data rehta hai vo req mei server ke paas jaata hi jaata hai
+Token ko response mei nahi bhejte hai usse cookie storage mei save karate hai
+
+npm i cookie-parser (Middleware)
