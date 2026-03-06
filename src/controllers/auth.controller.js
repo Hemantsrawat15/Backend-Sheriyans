@@ -4,10 +4,21 @@ const jwt = require("jsonwebtoken");
 async function registerUser (req,res){
     const {username, email, password} = req.body;
 
-    const user = await userModel.create({
-        username, email, password
+    const user = await userModel.findOne({
+        username,
+        email,
     })
 
+    if(user){
+        return res.status(200).json({
+            message:"User already exist please log in",
+        })
+    }
+    
+    user = await userModel.create({
+        username, email, password
+    })
+    
     // jwt.sign() gives us token and ask for two params
     // 1. User kaa data (as an object) jo unique hona chahiye hence we send mongodb id
     // 2. JWT_SECRET
