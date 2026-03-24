@@ -4,7 +4,9 @@
   "description": "26th February => {\r     timeEnded: 58:17,\r     learn: {\r         Learn about REST API\r         GET, POST, PATCH, DELETE\r     },\r }",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -20,10 +22,9 @@
   "homepage": "https://github.com/Hemantsrawat15/Backend-Sheriyans#readme",
   "dependencies": {
     "cookie-parser": "^1.4.7",
-    "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.2.4"
+    "mongoose": "^9.3.2"
   }
 }
